@@ -1,0 +1,17 @@
+# Resources
+cache/
+
+# Python
+__pycache__/
+
+# office
+~$*.doc*
+~*.tmp
+
+# latex
+*.log
+*.aux
+*.fls
+*.pdf
+*.xdv
+*.fdb*
