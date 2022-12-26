@@ -1,1 +1,122 @@
-C:/Users/LYan/texmf/tex/GKExam.sty
+\ProvidesPackage{GKExam}[2022/12/22 v1.1 Non-standard LaTeX package]
+
+%\documentclass[12pt,twoside,space]{ctexart}
+%\usepackage{NEMT}
+
+%------------------------------- 大题 ----------------------------------%
+\ctexset{section = {name = {,、\hspace*{-5mm}},number = \chinese{section},format = {\zihao{5}\heiti\raggedright}}}
+\ctexset{subsection = {name = {\hspace{5mm},\hspace*{-1mm}},number = (\chinese{subsection}),format = {\zihao{5}\heiti\raggedright}}}
+\RequirePackage{titlesec} %titlesec宏包调整section与正文间距
+\titlespacing*{\section}{0pt}{9pt}{4pt}
+%------------------------------- 大题 ----------------------------------%
+
+%------------------------------ 选择题 ----------------------------------%
+\RequirePackage{tasks}%选择题宏包，tasks环境
+\settasks{
+	label={\Alph*.},
+	label-align = left,
+	label-offset = {1em},
+	label-width = 12pt,
+	item-indent = {24pt}, % indent = label-width + label-offset
+	column-sep = {1em},
+	before-skip = {-1em},
+	after-skip = {-1em},
+	after-item-skip = 0em}
+% 选择题示例 
+%\begin{tasks}(4)
+%	\task 
+%	\task 
+%	\task 
+%	\task 
+%\end{tasks}
+%------------------------------ 选择题 ----------------------------------%
+%\setcounter{enumi}{12}
+
+\def\tiankongdaan#1{\makebox[3em][c]{#1}}
+\newcommand{\blank}[1]{\underline{\tiankongdaan{$\blacktriangle$}}}
+\DeclareOption{ans}{\renewcommand{\blank}[1]{\,\underline{#1}\,
+}}
+\ProcessOptions
+
+
+%%%----------数学类---------%%%
+%=======================================================================
+\RequirePackage{amsmath,amssymb}%
+\def\dif{\mathop{}\!\mathrm{d}}
+\DeclareMathOperator{\rank}{rank}
+\RequirePackage{bm}
+\RequirePackage{pifont}
+\RequirePackage{extarrows} %长等号
+\RequirePackage{scalerel}%缩放公式大小
+
+%%---------------- 定理\引理\定义样式设置 --------------------%%
+\RequirePackage{amsthm}
+\renewcommand{\proofname}{\heiti{证明}}
+%\newenvironment{proof}{\par\noindent{\heiti{证明.\,}}}{\hspace*{\fill}{$\Box$}\par}
+%\newenvironment{proof}{\par\noindent{\heiti{证明.\,}}\small}{\hfill$\Box$\quad\par}
+\newenvironment{Proof}{\par\noindent{\heiti{证明.\,}}\small}{\hspace*{\fill}$\Box$\quad\par}
+\newenvironment{Solution}{\par\noindent{\heiti{解.\,}}}{\hspace*{\fill}{$\Diamond$}\par}
+
+
+\RequirePackage[T1]{fontenc}
+\RequirePackage{mathptmx}
+\newfontfamily\TNRBI{Times New Roman Bold Italic} %新罗马字体英文的粗斜体
+\newcommand{\bfit}[1]{\text{\TNRBI #1}} %amsmath 
+
+
+%-------------------------页眉页脚-%-装订线-------------------------------%
+\RequirePackage{tikz}
+\usetikzlibrary{circuits} %circuit handle symbol
+\newcommand{\defen}[2][1cm]{\hspace*{\fill}\raisebox{-1.1ex}{\tikz\draw[line width=1pt,dash pattern=on 1pt off 2.5pt on 1pt off 2.5pt] (0pt,0pt)--(#1 ,0pt)node[right=-1mm]{(#2~分)};}\newline}
+\RequirePackage{calc}%使用四则运算宏包%\usepackage{ulem}%画线的宏包
+
+
+%%--------------- 页面设置 ---------------%%
+\RequirePackage[a4paper,top=15mm,bottom=25mm,left=20mm,right=15mm,headsep=10pt]
+{geometry}
+\RequirePackage{lastpage}
+\RequirePackage{fancyhdr}%使用页眉页脚宏包
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[CO]{试题\quad 第 \thepage 页 \quad (共\pageref{LastPage}页)}
+% \fancyfoot[CE]{试题\quad 第 \thepage 页 \quad (共\pageref{LastPage}页)}
+\renewcommand{\headrulewidth}{0pt}
+%----------------------------------------------------------------------
+
+
+
+\RequirePackage{graphicx} %插图
+\RequirePackage{wrapfig}
+\RequirePackage{eso-pic}
+\newcommand{\watermark}[3]{\AddToShipoutPictureBG{%
+\parbox[b][\paperheight]{\paperwidth}{%
+\vfill%
+\centering%
+\tikz[remember picture, overlay]%
+\node [rotate = #1, scale = #2] at (current page.center)%
+{\textcolor{gray!80!cyan!30}{#3}};
+\vfill}}}
+%\watermark{60}{6}{14-金融工程-白兔兔}
+
+
+%-------------------表格-------------------%
+\RequirePackage{array}%m{3em}
+\usepackage{tabularx}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+%-----------------------------------------%
+
+
+%=======================================================================
+\RequirePackage{color,xcolor}%-颜色-%
+%=======================================================================
+
+
+\RequirePackage{enumitem}
+
+\def\juemi{\noindent{\heiti\zihao{-4} 绝密$\bigstar$启用前}}
+\def\biaoti#1{\begin{center}{\zihao{3} #1}\end{center}}
+\def\fubiaoti#1{\begin{center}{\zihao{2}\heiti #1}\end{center}}
+
+
+%\raisebox{-3.2ex}{}
+\endinput
