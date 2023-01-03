@@ -16,3 +16,4 @@ __pycache__/
 *.xdv
 *.fdb*
 *.gz
+*.synctex(busy)
