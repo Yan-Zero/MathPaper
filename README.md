@@ -20,7 +20,7 @@
 
 - 全国乙卷（文科）
 
-### Laxtex 版
+### Latex 版
 
 #### 2016
 
@@ -35,6 +35,7 @@
 
 - SNE: Standard National Examination 全国卷
 - Jiangsu: 江苏卷
+- Shanghai: 上海卷
 
 ## 特别鸣谢
 
