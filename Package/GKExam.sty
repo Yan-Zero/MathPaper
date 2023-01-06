@@ -72,13 +72,14 @@
 
 
 %%--------------- 页面设置 ---------------%%
+\newcommand{\filename}{试题}
 \RequirePackage[a4paper,top=15mm,bottom=25mm,left=20mm,right=15mm,headsep=10pt]
 {geometry}
 \RequirePackage{lastpage}
 \RequirePackage{fancyhdr}%使用页眉页脚宏包
 \pagestyle{fancy}
 \fancyhf{}
-\fancyfoot[CO]{试题\quad 第 \thepage 页 \quad (共\pageref{LastPage}页)}
+\fancyfoot[CO]{\filename\quad 第 \thepage 页 \quad (共\pageref{LastPage}页)}
 % \fancyfoot[CE]{试题\quad 第 \thepage 页 \quad (共\pageref{LastPage}页)}
 \renewcommand{\headrulewidth}{0pt}
 %----------------------------------------------------------------------
@@ -104,6 +105,9 @@
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
 %-----------------------------------------%
 
+%=====================平行========================
+\newcommand{\varparallel}{\mathrel{/\mskip-4mu/}}
+%=================================================
 
 %=======================================================================
 \RequirePackage{color,xcolor}%-颜色-%
